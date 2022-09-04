@@ -1,5 +1,10 @@
-export interface IMeetup {
-  id: string;
+import { Document, WithId, ObjectId } from 'mongodb';
+
+interface Meetup extends Document {
+  _id: string | ObjectId;
+}
+
+export interface IMeetup extends WithId<Meetup> {
   image: string;
   title: string;
   address: string;
@@ -13,22 +18,3 @@ export type MeetsupsProps = {
 export type MeetsupProps = {
   meetup: IMeetup;
 };
-
-export const DUMMY_LIST: IMeetup[] = [
-  {
-    id: 'm1',
-    title: 'First',
-    image:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/1920px-Stadtbild_M%C3%BCnchen.jpg',
-    address: 'Some address 5, 12345 Some City',
-    description: 'This is the first meetup!',
-  },
-  {
-    id: 'm2',
-    title: 'Second',
-    image:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/1920px-Stadtbild_M%C3%BCnchen.jpg',
-    address: 'Some address 5, 12345 Some City',
-    description: 'This is the second meetup!',
-  },
-];

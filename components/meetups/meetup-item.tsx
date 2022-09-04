@@ -9,11 +9,12 @@ export const MeetupItem: React.FC<IMeetup> = ({
   image,
   title,
   address,
-  id,
+  _id,
 }) => {
   const router = useRouter();
 
   const showDetailsHandler = () => {
+    const id = _id.toString();
     router.push(`/${id}`);
   };
 
